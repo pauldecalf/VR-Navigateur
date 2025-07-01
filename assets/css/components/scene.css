@@ -1,0 +1,11 @@
+#scene-container {
+    box-shadow: rgba(13, 196, 241, 0.25) 0px 50px 100px -20px, rgba(8, 250, 238, 0.431) 0px 30px 60px -30px, rgba(7, 238, 230, 0.35) 0px -2px 6px 0px inset;
+    border: 1px solid red;
+    overflow: hidden;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+  }
+  

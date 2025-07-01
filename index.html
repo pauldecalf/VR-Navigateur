@@ -15,13 +15,20 @@
                     <ul class="sess-modes"></ul>
                     <p class="d-none mode-in-use"></p>
 
-
+                    <div id="scene-container"></div>
                     <button id="vr-switch" class="d-none"></button>
-
 
                 </div>
             </div>
         </div>
+        <script type="importmap">
+            {
+              "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@latest/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@latest/examples/jsm/"
+              }
+            }
+        </script>
         <script type="module" src="./assets/js/app.js"></script>
     </body>
 </html>

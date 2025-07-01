@@ -1,6 +1,12 @@
 import { ready } from "./lib/utils.js";
 import * as Init from "./lib/init.js";
 
+// Import three JS
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+
 // globals
 let XRSession = null;
 const IMMERSIVE_VR = "immersive-vr";
@@ -91,5 +97,17 @@ async function onSessionStarted (session) {
 
 ready(function() {
     console.log('DOM correctly loaded...'); 
+    console.log("Threejs object", THREE);
+    console.log("OrbitControl", OrbitControls);
+
+const container = document.getElementById("scene-container");
+container.style.width = "100%";
+container.style.height = "90vh";
+
+
+const controls = new OrbitControls(camera, renderer, domElement);
+const loader = new GLTFLoader();
+
+
     init();
 })
