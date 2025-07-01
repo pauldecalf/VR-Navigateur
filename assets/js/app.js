@@ -11,7 +11,7 @@ const INLINE = "inline";
 async function init() {
 
     // on definit le mode désiré
-    const sessionMode = INLINE;
+    let sessionMode = INLINE;
     // on selectionne le bouton dans le DOM
     const vrSwitch = document.querySelector("#vr-switch");
 
@@ -20,6 +20,39 @@ async function init() {
         console.log("Navigator does not support XR...");
         return;
     }
+
+
+// On fait le checkup complet sur les modes desponibles
+const modeList = document.querySelector(".sess-modes");
+const modeLabel = document.querySelector(".mode-label");
+const modeInUse = document.querySelector(".mode-in-use");
+
+for( const mode of [IMMERSIVE_VR, IMMERSIVE_AR, INLINE]) {
+    if(await Init.checkXRSession(mode)){
+        modeList.innerHTML = `<li data-mode="${mode}" class="active-mode cursor-pointer" style="color: lightgreen">
+            mode <span style="text-transform: uppercase">${mode}</span> possible
+        </li>`
+    } else {
+        modeList.innerHTML = `<li data-mode="${mode}" style="color: red;">
+        mod <span style="text-transform: uppercase">${mode}</span> non supporté
+        </li>`
+    }
+}
+
+const activeBtn = document.querySelectorAll('.active-mode');
+activeBtn.forEach((li) => {
+    li.addEventListener("click", async function () {
+        const mode = li.getAttribute("data-mode");
+        console.log("mode:", mode);
+        sessionMode = mode;
+        modeLabel.classList.add('d-none');
+        modeList.classList.add('d-none');
+        modeInUse.classList.remove('d-none');
+        modeInUse.innerHTML = `Mode in use : <span style="text-transform: ussercase; fontweight: bold;>${mode}</span>`;
+        vrSwitch.classList.remove('d-none');
+    })
+})
+
 
     const XRSessionOK = await Init.checkXRSession(sessionMode);
     if(!XRSessionOK) {

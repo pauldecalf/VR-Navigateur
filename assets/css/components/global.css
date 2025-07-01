@@ -155,3 +155,11 @@ body {
 .p-absolute {
   position: absolute;
 }
+
+.d-none {
+  display: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
