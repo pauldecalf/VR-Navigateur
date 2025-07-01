@@ -1,0 +1,12 @@
+#vr-switch {
+    margin: 20px 0;
+    padding: 8px 16px;
+    color: white;
+    background: transparent;
+    border: 1 px solid gray;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+  }
